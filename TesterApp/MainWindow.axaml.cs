@@ -10,8 +10,9 @@ public partial class MainWindow : Window
     {
         InitializeComponent();
         
-        var factory = new IconsFactory();
-        var source = factory.CreateDrawingImage(IconNames.icon_database_alert, Brushes.White);
-        MyImage.Source = source;
+        
+        // var factory = new IconsFactory();
+        // var source = factory.CreateDrawingImage(IconNames.icon_database_alert, Brushes.White);
+        // MyImage.Source = source;
     }
 }

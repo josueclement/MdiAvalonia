@@ -2,8 +2,21 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mdi="using:MdiAvalonia.Markup"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="TesterApp.MainWindow"
         Title="TesterApp">
-    <Image x:Name="MyImage" />
+    
+    <Grid RowDefinitions="*,*">
+        <Image Source="{mdi:IconSource Icon=icon_keyboard, Brush=AliceBlue}"
+               Margin="10" />
+        
+        <PathIcon Grid.Row="1"
+                  Data="{mdi:IconGeometry Icon=icon_mouse}"
+                  Foreground="Red"
+                  Width="128"
+                  Height="128"
+                  Margin="10" />
+       
+    </Grid>
 </Window>

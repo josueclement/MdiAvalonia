@@ -1,6 +1,9 @@
 // ReSharper disable InconsistentNaming
 namespace MdiAvalonia;
 
+/// <summary>
+/// Defines the available icon identifiers.
+/// </summary>
 public enum IconNames
 { 
     icon_ab_testing,

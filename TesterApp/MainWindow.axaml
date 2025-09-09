@@ -8,11 +8,11 @@
         Title="TesterApp">
     
     <Grid RowDefinitions="*,*">
-        <Image Source="{mdi:IconSource Icon=icon_keyboard, Brush=AliceBlue}"
+        <Image Source="{mdi:IconSource Icon=switch, Brush=AliceBlue}"
                Margin="10" />
         
         <PathIcon Grid.Row="1"
-                  Data="{mdi:IconGeometry Icon=icon_mouse}"
+                  Data="{mdi:IconGeometry Icon=decimal}"
                   Foreground="Red"
                   Width="128"
                   Height="128"

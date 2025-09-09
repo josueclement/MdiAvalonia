@@ -11,8 +11,9 @@ public partial class MainWindow : Window
         InitializeComponent();
         
         
-        // var factory = new IconsFactory();
-        // var source = factory.CreateDrawingImage(IconNames.icon_database_alert, Brushes.White);
+        var factory = new IconsFactory();
+        var source = factory.CreateDrawingImage(IconNames.@null, Brushes.White);
+        var test = IconNames.@null.ToString();
         // MyImage.Source = source;
     }
 }

@@ -17,12 +17,11 @@ public class IconsFactory
 
     /// <summary>
     /// Converts an IconNames enum value to the corresponding icon name string format.
-    /// Removes the "icon_" prefix and replaces underscores with hyphens.
     /// </summary>
     /// <param name="icon">The icon enum value to convert</param>
     /// <returns>The formatted icon name string</returns>
     private static string GetIconName(IconNames icon)
-        => $"{icon}".Replace("_", "-")[5..]; // Remove "icon_" prefix and replace underscores
+        => $"{icon}".Replace("_", "-");
 
     /// <summary>
     /// Generates the full resource stream name for an embedded SVG icon file.

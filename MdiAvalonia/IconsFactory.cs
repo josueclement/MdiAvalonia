@@ -16,7 +16,7 @@ public class IconsFactory
     private static readonly Assembly Assembly = typeof(IMdiAvaloniaMarker).Assembly;
 
     /// <summary>
-    /// Converts an IconNames enum value to the corresponding icon name string format.
+    /// Converts an Icon enum value to the corresponding icon name string format.
     /// </summary>
     /// <param name="icon">The icon enum value to convert</param>
     /// <returns>The formatted icon name string</returns>
@@ -29,21 +29,30 @@ public class IconsFactory
     /// <param name="icon">The icon enum value</param>
     /// <returns>The complete resource stream path for the SVG file</returns>
     private static string GetIconStreamName(Icon icon)
-    {
-        var iconName = GetIconName(icon);
-        return $"MdiAvalonia.svg.{iconName}.svg";
-    }
+        => $"MdiAvalonia.svg.{GetIconName(icon)}.svg";
 
     /// <summary>
-    /// Creates an Avalonia Geometry object from an SVG icon by parsing the SVG path data.
+    /// Retrieves the embedded resource stream for the specified SVG icon file.
     /// </summary>
-    /// <param name="icon">The icon to create geometry for</param>
-    /// <returns>A Geometry object representing the icon's vector path</returns>
-    /// <exception cref="InvalidOperationException">Thrown when the icon is not found or cannot be parsed</exception>
-    public Geometry CreateGeometry(Icon icon)
+    /// <param name="icon">The icon enum value to get the stream for</param>
+    /// <returns>A Stream containing the SVG icon data, or null if the icon resource is not found</returns>
+    // ReSharper disable once MemberCanBePrivate.Global
+    public Stream? GetIconStream(Icon icon)
+        => Assembly.GetManifestResourceStream(GetIconStreamName(icon));
+
+    /// <summary>
+    /// Extracts the SVG path data string from an embedded SVG icon resource.
+    /// This method loads the SVG file, parses its XML content, and retrieves the 'd' attribute
+    /// from the path element which contains the vector path data used for rendering the icon.
+    /// </summary>
+    /// <param name="icon">The icon enum value to extract path data for</param>
+    /// <returns>The SVG path data string that defines the icon's vector shape</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the icon resource is not found or the SVG structure is invalid</exception>
+    // ReSharper disable once MemberCanBePrivate.Global
+    public string GetIconData(Icon icon)
     {
         // Load the SVG file from embedded resources
-        using var stream = Assembly.GetManifestResourceStream(GetIconStreamName(icon))
+        using var stream = GetIconStream(icon)
                            ?? throw new InvalidOperationException($"Icon '{icon}' not found");
         using var sr = new StreamReader(stream);
         var content = sr.ReadToEnd();
@@ -61,9 +70,25 @@ public class IconsFactory
 
         // Parse the 'd' attribute which contains the path data
         if (node?.Attributes?["d"]?.Value is { } val)
-            return Geometry.Parse(val);
+            return val;
 
         throw new InvalidOperationException($"Cannot read icon '{GetIconName(icon)}'");
+        
+    }
+
+    /// <summary>
+    /// Creates an Avalonia Geometry object from an SVG icon by parsing the SVG path data.
+    /// </summary>
+    /// <param name="icon">The icon to create geometry for</param>
+    /// <returns>A Geometry object representing the icon's vector path</returns>
+    /// <exception cref="InvalidOperationException">Thrown when the icon is not found or cannot be parsed</exception>
+    public Geometry CreateGeometry(Icon icon)
+    {
+        // Get the icon data
+        var data = GetIconData(icon);
+        
+        // Parse the icon data into a Geometry object
+        return Geometry.Parse(data);
     }
 
     /// <summary>

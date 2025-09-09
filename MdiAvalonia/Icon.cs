@@ -4,7 +4,7 @@ namespace MdiAvalonia;
 /// <summary>
 /// Defines the available icon identifiers.
 /// </summary>
-public enum IconNames
+public enum Icon
 { 
     ab_testing,
     abacus,

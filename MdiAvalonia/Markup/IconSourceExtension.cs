@@ -19,7 +19,7 @@ public class IconSourceExtension : MarkupExtension
     /// Gets or sets the specific icon to display from the Material Design Icons collection.
     /// This property determines which icon shape will be rendered.
     /// </summary>
-    public IconNames Icon { get; set; }
+    public Icon Icon { get; set; }
 
     /// <summary>
     /// Provides the actual drawing image value when the markup extension is processed by the XAML parser.

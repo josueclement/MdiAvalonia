@@ -12,8 +12,8 @@ public partial class MainWindow : Window
         
         
         var factory = new IconsFactory();
-        var source = factory.CreateDrawingImage(IconNames.@null, Brushes.White);
-        var test = IconNames.@null.ToString();
+        var source = factory.CreateDrawingImage(MdiAvalonia.Icon.@null, Brushes.White);
+        var test = MdiAvalonia.Icon.@null.ToString();
         // MyImage.Source = source;
     }
 }

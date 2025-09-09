@@ -20,7 +20,7 @@ public class IconsFactory
     /// </summary>
     /// <param name="icon">The icon enum value to convert</param>
     /// <returns>The formatted icon name string</returns>
-    private static string GetIconName(IconNames icon)
+    private static string GetIconName(Icon icon)
         => $"{icon}".Replace("_", "-");
 
     /// <summary>
@@ -28,7 +28,7 @@ public class IconsFactory
     /// </summary>
     /// <param name="icon">The icon enum value</param>
     /// <returns>The complete resource stream path for the SVG file</returns>
-    private static string GetIconStreamName(IconNames icon)
+    private static string GetIconStreamName(Icon icon)
     {
         var iconName = GetIconName(icon);
         return $"MdiAvalonia.svg.{iconName}.svg";
@@ -40,7 +40,7 @@ public class IconsFactory
     /// <param name="icon">The icon to create geometry for</param>
     /// <returns>A Geometry object representing the icon's vector path</returns>
     /// <exception cref="InvalidOperationException">Thrown when the icon is not found or cannot be parsed</exception>
-    public Geometry CreateGeometry(IconNames icon)
+    public Geometry CreateGeometry(Icon icon)
     {
         // Load the SVG file from embedded resources
         using var stream = Assembly.GetManifestResourceStream(GetIconStreamName(icon))
@@ -73,7 +73,7 @@ public class IconsFactory
     /// <param name="icon">The icon to create the drawing image for</param>
     /// <param name="brush">The brush to use for filling the icon (color, gradient, etc.)</param>
     /// <returns>A DrawingImage that can be used in Avalonia Image controls</returns>
-    public DrawingImage CreateDrawingImage(IconNames icon, IBrush brush)
+    public DrawingImage CreateDrawingImage(Icon icon, IBrush brush)
     {
         // Get the vector geometry for the icon
         var geometry = CreateGeometry(icon);

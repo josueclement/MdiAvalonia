@@ -13,7 +13,7 @@ public class IconGeometryExtension : MarkupExtension
     /// This property specifies which icon geometry should be created.
     /// </summary>
     /// <value>The icon name from the IconNames enumeration.</value>
-    public IconNames Icon { get; set; }
+    public Icon Icon { get; set; }
 
     /// <summary>
     /// Provides the geometry data for the specified Material Design Icon.

@@ -18,7 +18,5 @@
                   Height="128"
                   Margin="10" />
         
-        <PathIcon Data="{mdi:IconGeometry Icon=decimal}" Foreground="Red" />
-       
     </Grid>
 </Window>

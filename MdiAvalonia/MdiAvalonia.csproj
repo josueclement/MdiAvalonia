@@ -1,10 +1,37 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net9.0</TargetFramework>
+        <OutputType>Library</OutputType>
+        <TargetFrameworks>netstandard2.1;net9.0</TargetFrameworks>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <LangVersion>13</LangVersion>
+        <Authors>Josué Clément</Authors>
+        <Copyright>Copyright © 2025 Josué Clément</Copyright>
+        <PackageId>MdiAvalonia</PackageId>
+        <Title>Material design icons for Avalonia</Title>
+        <Version>1.0.0</Version>
+        <Description>Avalonia vector icon library using MaterialDesign open source icons</Description>
+        <PackageTags>avalonia icons materialdesign</PackageTags>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+        <PackageProjectUrl>https://github.com/josueclement/MdiAvalonia/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/josueclement/MdiAvalonia</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <IncludeSymbols>True</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     </PropertyGroup>
+
+    <!-- Readme for the NuGet package -->
+    <PropertyGroup>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="..\README.md" Pack="true" PackagePath="\" />
+        <None Include="..\LICENSE.md" Pack="true" PackagePath="\" />
+    </ItemGroup>
 
 <!--    <ItemGroup>-->
 <!--      <Folder Include="svg\" />-->
